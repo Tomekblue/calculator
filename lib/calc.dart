@@ -11,7 +11,7 @@ class Calculator extends StatefulWidget {
 }
 num first = 0;
 num second = 0;
-String number = '';
+String number ='';
 num result = 0;
 String opp = '';
 class _CalculatorState extends State<Calculator> {
