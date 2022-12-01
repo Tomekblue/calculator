@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
+      theme: ThemeData(scaffoldBackgroundColor: Colors.black,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the

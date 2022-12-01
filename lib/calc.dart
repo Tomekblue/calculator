@@ -54,18 +54,22 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Column(
-        children:[
-          Container(height: 100, alignment: Alignment.centerRight,color: Colors.black,child:
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+         child: Column(
+            children:[
+          Container(height: MediaQuery.of(context).size.height * 0.2,
+            alignment: Alignment.centerRight,color: Colors.black,child:
             Column(children: [
-              const SizedBox(height: 30,),
+              const SizedBox(height: 60,),
               Text(question, textAlign: TextAlign.right, style: const TextStyle(fontSize: 40, color: Colors.white)),],),),
-          Container(height: 259, alignment: Alignment.centerRight,color: Colors.black,child:
+          Container(height: MediaQuery.of(context).size.height * 0.3,
+              alignment: Alignment.centerRight,color: Colors.black,child:
             Column(children: [
-              const SizedBox(height: 30,),
               Text(result.toString(), style: const TextStyle(fontSize: 60, color: Colors.white)),
             ],)),
-          Container(color: Colors.black, child: Row(
+          Container(height: MediaQuery.of(context).size.height * 0.1,
+            color: Colors.black, child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
@@ -92,97 +96,65 @@ class _CalculatorState extends State<Calculator> {
                 calc('/');
               },child: const Text('/', style: tTextbutton,),),
           ],),),
-          Container(color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(height: MediaQuery.of(context).size.height * 0.1,
+            color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
-                setState(() {
-                  question+='7';
-                  number = (number + '7');
-                });
+                calc('7');
               }, child: const Text('7', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  question+='8';
-                  number = (number + '8');
-                });
+                calc('8');
               }, child: const Text('8', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  question+='9';
-                  number = (number + '9');
-                });
+                calc('9');
               }, child: const Text('9', style: bTextbutton,),),
               TextButton(onPressed: () {
                 calc('x');
               }, child: const Text('x', style: tTextbutton,),),
           ],),),
-          Container(color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(height: MediaQuery.of(context).size.height * 0.1,
+            color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
-                setState(() {
-                  question+='4';
-                  number = (number + '4');
-                });
+                calc('4');
               }, child: const Text('4', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  question+='5';
-                  number = (number + '5');
-                });
+                calc('5');
               }, child: const Text('5', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  question+='6';
-                  number = (number + '6');
-                });
+                calc('6');
               }, child: const Text('6', style: bTextbutton,),),
               TextButton(onPressed: () {
                 calc('-');
               }, child: const Text('-', style: tTextbutton,),),
             ],),),
-          Container(color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(height: MediaQuery.of(context).size.height * 0.1,
+            color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
-                setState(() {
-                  question+='1';
-                  number = (number + '1');
-                });
+                calc('1');
               }, child: const Text('1', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  question+='2';
-                  number = (number + '2');
-                });
+                calc('2');
               }, child: const Text('2', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  question+='3';
-                  number = (number + '3');
-                });
+                calc('3');
               }, child: const Text('3', style: bTextbutton,),),
               TextButton(onPressed: () {
                 calc('+');
               }, child: const Text('+', style: tTextbutton,),),
             ],),),
-          Container(color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(height: MediaQuery.of(context).size.height * 0.1,
+            color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
-                setState(() {
-                  question+='00';
-                  number = number + '00';
-                });
+                calc('00');
               }, child: const Text('00', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  question+='0';
-                  number = number + '0';
-                });
+                calc('0');
               }, child: const Text('0', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  question+=',';
-                  number = number + '.';
-                });
+                calc(',');
               }, child: const Text(',', style: bTextbutton,),),
               TextButton(onPressed: () {
                 calc('=');
