@@ -154,11 +154,12 @@ class _CalculatorState extends State<Calculator> {
                 calc('0');
               }, child: const Text('0', style: bTextbutton,),),
               TextButton(onPressed: () {
-                calc(',');
+                calc('.');
               }, child: const Text(',', style: bTextbutton,),),
               TextButton(onPressed: () {
                 calc('=');
                 result;
+                question = '$first $opp $second=';
               }, child: const Text('=', style: tTextbutton,),),
             ],),),
         ],
