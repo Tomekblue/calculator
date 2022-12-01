@@ -1,55 +1,54 @@
 import 'package:flutter/material.dart';
 import 'var.dart';
 
-const TextStyle tTextbutton = TextStyle(fontSize: 55);
-const TextStyle bTextbutton = TextStyle(color: Colors.black, fontSize: 55);
+const TextStyle tTextbutton = TextStyle(color: Colors.deepOrange, fontSize: 55);
+const TextStyle bTextbutton = TextStyle(color: Colors.white, fontSize: 55);
 class Calculator extends StatefulWidget {
   const Calculator({Key? key}) : super(key: key);
 
   @override
   State<Calculator> createState() => _CalculatorState();
 }
-String first = '';
-String second = '';
+num first = 0;
+num second = 0;
 String number = '';
 num result = 0;
-// void addition() {
-//   var a = num.parse(first);
-//   var b = num.parse(second);
-//   result = (result + a + b);
-// }
-// void subtraction() {
-//   var a = num.parse(first);
-//   var b = num.parse(second);
-//   result = (a - b);
-// }
-// void multiplication() {
-//   var a = num.parse(first);
-//   var b = num.parse(second);
-//   result = (a * b);
-// }
-// void division() {
-//   var a = num.parse(first);
-//   var b = num.parse(second);
-//   result = (a / b);
-// }
+String opp = '';
 class _CalculatorState extends State<Calculator> {
 
-  void calc(type){
-    var a = num.parse(first);
-    var b = num.parse(second);
-      if(type == '/'){
-        result = (a / b);
+  void calc(btnText) {
+    if (btnText == 'C') {
+      result = 0;
+      number = '';
+      first = 0;
+      second = 0;
+    } else if (btnText == '+' ||
+        btnText == '-' ||
+        btnText == 'x' ||
+        btnText == '/') {
+      first = int.parse(question);
+      result = 0;
+      opp = btnText;
+    } else if (btnText == '=') {
+      second = int.parse(question);
+      if (opp == '+') {
+        result = (first + second);
       }
-      else if(type == 'x'){
-        result = (a * b);
+      if (opp == '-') {
+        result = (first - second);
       }
-      else if(type == '-'){
-        result = (a - b);
+      if (opp == 'x') {
+        result = (first * second);
       }
-      else if(type == '+'){
-        result = (a + b);
+      if (opp == '/') {
+        result = (first ~/ second);
       }
+    } else {
+      result = int.parse(question + btnText);
+    }
+    setState(() {
+      question = result.toString();
+    });
   }
 
   @override
@@ -66,18 +65,11 @@ class _CalculatorState extends State<Calculator> {
               const SizedBox(height: 30,),
               Text(result.toString(), style: const TextStyle(fontSize: 60, color: Colors.white)),
             ],)),
-          Container(color: Colors.black38, child: Row(
+          Container(color: Colors.black, child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
-                setState(() {
-                  question='';
-                  result = 0;
-                  first = '';
-                  second = '';
-                  number = '';
-                  type='';
-                });
+                calc('C');
               },child: const Text('C', style: tTextbutton,),),
               TextButton(onPressed: () {
                 setState(() {
@@ -97,14 +89,10 @@ class _CalculatorState extends State<Calculator> {
                 });
               },child: const Text('%', style: tTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  type='/';
-                  first = question;
-                  question='';
-                });
+                calc('/');
               },child: const Text('/', style: tTextbutton,),),
           ],),),
-          Container(color: Colors.black38, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
                 setState(() {
@@ -125,14 +113,10 @@ class _CalculatorState extends State<Calculator> {
                 });
               }, child: const Text('9', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  type='x';
-                  first = question;
-                  question='';
-                });
+                calc('x');
               }, child: const Text('x', style: tTextbutton,),),
           ],),),
-          Container(color: Colors.black38, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
                 setState(() {
@@ -153,14 +137,10 @@ class _CalculatorState extends State<Calculator> {
                 });
               }, child: const Text('6', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  type='-';
-                  first = question;
-                  question='';
-                });
+                calc('-');
               }, child: const Text('-', style: tTextbutton,),),
             ],),),
-          Container(color: Colors.black38, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
                 setState(() {
@@ -181,14 +161,10 @@ class _CalculatorState extends State<Calculator> {
                 });
               }, child: const Text('3', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  type='+';
-                  first = question;
-                  question='';
-                });
+                calc('+');
               }, child: const Text('+', style: tTextbutton,),),
             ],),),
-          Container(color: Colors.black38, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Container(color: Colors.black, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(onPressed: () {
                 setState(() {
@@ -209,12 +185,8 @@ class _CalculatorState extends State<Calculator> {
                 });
               }, child: const Text(',', style: bTextbutton,),),
               TextButton(onPressed: () {
-                setState(() {
-                  second = question;
-                  question='';
-                  calc(type);
-                  result;
-                });
+                calc('=');
+                result;
               }, child: const Text('=', style: tTextbutton,),),
             ],),),
         ],
